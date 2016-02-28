@@ -26,9 +26,15 @@ def maybe_create_table(conn):
 @csrf_exempt
 def msg_submit(request):
 
+    if request.method != "POST":
+        return redirect("/")
+
     di = request.POST
 
-    s = di["message"]
+    try:
+        s = di["message"]
+    except KeyError:
+        return redirect("/")
     if s == "":
         return redirect("/")
 
@@ -41,6 +47,9 @@ def msg_submit(request):
 
 @csrf_exempt
 def destroy_all(request):
+
+    if request.method != "POST":
+        return redirect("/")
 
     with sqlite3.connect(DB_FILE) as conn:
         conn.execute("DROP TABLE messages")
