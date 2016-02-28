@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 
 DB_FILE = "messages.db"
 
-HTML_START = '''<html><head><title>Chatbored</title></head><body><div>'''
+HTML_START = '''<html><head><title>msgbored</title></head><body><div>'''
 
 HTML_FORMS = '''<br>
 <br>
